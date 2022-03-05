@@ -8,6 +8,10 @@ from dotenv import dotenv_values
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
+@bot.message_handler(commands=["start"])
+def send_welcome(message):
+  bot.send_message(message, "Hi")
+
 with open("config.json", "r") as read_file:
     config = json.load(read_file)
 
