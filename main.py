@@ -8,10 +8,6 @@ from dotenv import dotenv_values
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                      level=logging.INFO)
 
-@bot.message_handler(commands=["start"])
-def send_welcome(message):
-  bot.send_message(message, "Hi")
-
 with open("config.json", "r") as read_file:
     config = json.load(read_file)
 
@@ -46,7 +42,7 @@ def get_single_song(bot, update):
     os.chdir(f'./.temp{message_id}{chat_id}')
 
     logging.log(logging.INFO, f'start downloading')
-    bot.send_message(chat_id=chat_id, text="Fetching...")
+    bot.send_message(chat_id=chat_id, text="Searching 🔎...")
 
     if config["SPOTDL_DOWNLOADER"]:
         os.system(f'spotdl {url}')
